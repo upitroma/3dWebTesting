@@ -98,10 +98,12 @@ document.onmousemove = function(){
   pastMouseX=event.clientX
   pastMouseY=event.clientY
 }
-
+camera.rotation.order = "YXZ";
 function movePlayer(){
   //FIXME: replace .01 with deltaTime-rotSpeed
   camera.rotation.y-=deltaMouseX*.01 
+  camera.rotation.x-=deltaMouseY*.01 
+  //TODO: clamp rotation.y
   deltaMouseX=0
   deltaMouseY=0
 
@@ -115,10 +117,7 @@ function movePlayer(){
     camera.position.z -= Math.cos(camera.rotation.y+1.5708) * spd;
     camera.position.x -= Math.sin(camera.rotation.y+1.5708) * spd;
   }
-
-  
-  
-   if(input.up == 1){
+  if(input.up == 1){
     camera.position.z -= Math.cos(camera.rotation.y) * spd;
     camera.position.x -= Math.sin(camera.rotation.y) * spd;
   }
