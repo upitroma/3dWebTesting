@@ -87,23 +87,44 @@ function createWall(x, y, z) {
   scene.add(cube);
 }
 
+var deltaMouseX=0
+var deltaMouseY=0
+var pastMouseX=0
+var pastMouseY=0
+document.onmousemove = function(){
 
+  deltaMouseX=event.clientX-pastMouseX
+  deltaMouseY=event.clientY-pastMouseY
+  pastMouseX=event.clientX
+  pastMouseY=event.clientY
+}
 
 function movePlayer(){
+  //FIXME: replace .01 with deltaTime-rotSpeed
+  camera.rotation.y-=deltaMouseX*.01 
+  deltaMouseX=0
+  deltaMouseY=0
+
+
+  
   if(input.right == 1){
-    camera.rotation.y -= rotSpd;
+    camera.position.z -= Math.cos(camera.rotation.y-1.5708) * spd;
+    camera.position.x -= Math.sin(camera.rotation.y-1.5708) * spd;
   }
   if(input.left == 1){
-    camera.rotation.y += rotSpd; 
+    camera.position.z -= Math.cos(camera.rotation.y+1.5708) * spd;
+    camera.position.x -= Math.sin(camera.rotation.y+1.5708) * spd;
   }
+
+  
   
    if(input.up == 1){
     camera.position.z -= Math.cos(camera.rotation.y) * spd;
-     camera.position.x -= Math.sin(camera.rotation.y) * spd;
+    camera.position.x -= Math.sin(camera.rotation.y) * spd;
   }
   if(input.down == 1){
     camera.position.z += Math.cos(camera.rotation.y) * spd;
-     camera.position.x += Math.sin(camera.rotation.y) * spd;
+    camera.position.x += Math.sin(camera.rotation.y) * spd;
   }
 }
 
