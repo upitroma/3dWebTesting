@@ -20,35 +20,54 @@ document.body.appendChild(renderer.domElement);
 var scale = 1;
 var rotSpd = 0.1;
 var spd = 0.1;
+
 var input = {left:0,right:0, up: 0, down: 0};
 var room = [
-  [1, 0, 1, 1, 1],
-  [1, 0, 0, 0, 1],
-  [1, 0, 0, 0, 1],
-  [1, 0, 0, 0, 1],
-  [1, 1, 1, 1, 1]
+  [
+    [1, 0, 1, 1, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1]
+  ],
+  [
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1]
+  ],
+  [
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 0, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1]
+  ]
 ];
 
 function init() {
   createLevel(room);
-  render();
+  update();
   camera.position.y = 0;
   camera.position.z = 0;
 
 }
 
-function render() {
+function update() {
   renderer.render(scene, camera);
   movePlayer();
   
-  requestAnimationFrame(render);
+  requestAnimationFrame(update);
 } 
 
 function createLevel(lvl) {
   for (var i = 0; i < lvl.length; i++) {
     for (var j = 0; j < lvl[i].length; j++) {
-      if (lvl[i][j] === 1) {
-        createWall(i, 0, j);
+      for (var k = 0; k < lvl[i][j].length; k++){
+        if (lvl[i][j][k] === 1) {
+          createWall(j, i, k);
+        }
       }
     }
   }
@@ -91,7 +110,7 @@ function movePlayer(){
 
 
 
- window.addEventListener('keydown', function(e) {
+window.addEventListener('keydown', function(e) {
   switch (e.keyCode) {
     case 68:
       input.right = 1;
