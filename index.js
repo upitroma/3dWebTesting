@@ -103,7 +103,9 @@ function movePlayer(){
   //FIXME: replace .01 with deltaTime-rotSpeed
   camera.rotation.y-=deltaMouseX*.01 
   camera.rotation.x-=deltaMouseY*.01 
-  //TODO: clamp rotation.y
+  camera.rotation.x= Math.min(Math.max(camera.rotation.x, -1.5708), 1.5708)
+
+
   deltaMouseX=0
   deltaMouseY=0
 
