@@ -3,13 +3,15 @@
 //import materials
 
 
-var materials = new Materials()
-
+var MyMaterials = new Materials()
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 //var cHelp = new THREE.CameraHelper(camera);
 //scene.add(cHelp);
+
+
+
 var spotLight = new THREE.SpotLight( 0xffffff);
 spotLight.position.set( 5, 15, 1 );
 spotLight.rotation.x = 0.05;
@@ -57,8 +59,12 @@ function init() {
   update();
   camera.position.y = 0;
   camera.position.z = 0;
-
 }
+
+//grab pointer
+document.addEventListener("mousedown", function(){
+  document.body.requestPointerLock()
+})
 
 function update() {// TODO: add deltaTime mechanic
   renderer.render(scene, camera);
@@ -68,7 +74,7 @@ function update() {// TODO: add deltaTime mechanic
 } 
 
 function createLevel(lvl) {
-  var currentMaterial = materials.normal
+  var currentMaterial = MyMaterials.normal
 
   for (var i = 0; i < lvl.length; i++) {
     for (var j = 0; j < lvl[i].length; j++) {
@@ -93,17 +99,15 @@ function createWall(x, y, z, material) {
   scene.add(cube);
 }
 
+//mouse movement
 var deltaMouseX=0
 var deltaMouseY=0
-var pastMouseX=0
-var pastMouseY=0
 document.onmousemove = function(){
-
-  deltaMouseX=event.clientX-pastMouseX
-  deltaMouseY=event.clientY-pastMouseY
-  pastMouseX=event.clientX
-  pastMouseY=event.clientY
+  deltaMouseX=event.movementX
+  deltaMouseY=event.movementY
 }
+
+
 camera.rotation.order = "YXZ";
 function movePlayer(){
   //FIXME: replace .01 with deltaTime-rotSpeed
