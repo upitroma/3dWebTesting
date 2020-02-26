@@ -1,16 +1,9 @@
 //https://codepen.io/burlapjack/pen/BQOObR
 
-//import materials
-
-
 var MyMaterials = new Materials()
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-//var cHelp = new THREE.CameraHelper(camera);
-//scene.add(cHelp);
-
-
 
 var spotLight = new THREE.SpotLight( 0xffffff);
 spotLight.position.set( 5, 15, 1 );
@@ -18,18 +11,19 @@ spotLight.rotation.x = 0.05;
 spotLight.angle = 0.5; 
 scene.add( spotLight );
 
-var lHelp = new THREE.SpotLightHelper(spotLight);
-scene.add(lHelp);
-
+//var lHelp = new THREE.SpotLightHelper(spotLight);
+//scene.add(lHelp);
 
 var renderer = new THREE.WebGLRenderer(); 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+
 var scale = 1;
 var rotSpd = 0.1;
 var spd = 0.1;
 
-var input = {left:0,right:0, up: 0, down: 0};
+//TODO: generate map in seporate file
+
 var room = [
   [
     [1, 0, 1, 1, 1],
@@ -54,25 +48,6 @@ var room = [
   ]
 ];
 
-function init() {
-  createLevel(room);
-  update();
-  camera.position.y = 0;
-  camera.position.z = 0;
-}
-
-//grab pointer
-document.addEventListener("mousedown", function(){
-  document.body.requestPointerLock()
-})
-
-function update() {// TODO: add deltaTime mechanic
-  renderer.render(scene, camera);
-  movePlayer();
-  
-  requestAnimationFrame(update);
-} 
-
 function createLevel(lvl) {
   var currentMaterial = MyMaterials.normal
 
@@ -87,8 +62,6 @@ function createLevel(lvl) {
   }
 }
 
-
-
 function createWall(x, y, z, material) {
   var geometry = new THREE.BoxGeometry(scale, scale, scale);
   
@@ -99,6 +72,28 @@ function createWall(x, y, z, material) {
   scene.add(cube);
 }
 
+function init() {
+  createLevel(room);
+  update();
+  camera.position.y = 0;
+  camera.position.z = 0;
+}
+
+function update() {// TODO: add deltaTime mechanic
+  renderer.render(scene, camera);
+  movePlayer();
+  
+  requestAnimationFrame(update);
+} 
+
+//keyboard inputs
+var input = {left:0,right:0, up: 0, down: 0};
+
+//grab mouse
+document.addEventListener("mousedown", function(){
+  document.body.requestPointerLock()
+})
+
 //mouse movement
 var deltaMouseX=0
 var deltaMouseY=0
@@ -107,7 +102,7 @@ document.onmousemove = function(){
   deltaMouseY=event.movementY
 }
 
-
+//player movement
 camera.rotation.order = "YXZ";
 function movePlayer(){
   //FIXME: replace .01 with deltaTime-rotSpeed
@@ -115,11 +110,8 @@ function movePlayer(){
   camera.rotation.x-=deltaMouseY*.01 
   camera.rotation.x= Math.min(Math.max(camera.rotation.x, -1.5708), 1.5708)
 
-
   deltaMouseX=0
   deltaMouseY=0
-
-
   
   if(input.right == 1){
     camera.position.z -= Math.cos(camera.rotation.y-1.5708) * spd;
@@ -140,8 +132,6 @@ function movePlayer(){
 }
 
 
-
-
 window.addEventListener('keydown', function(e) {
   switch (e.keyCode) {
     case 68:
@@ -158,8 +148,6 @@ window.addEventListener('keydown', function(e) {
       break;
   }
 });
-
-
 
 window.addEventListener('keyup', function(e) {
   switch (e.keyCode) {
