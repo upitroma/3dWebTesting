@@ -13,7 +13,7 @@ function generateMap(){
       [
         [1, 1, 1, 1, 1],
         [1, 0, 0, 0, 1],
-        [1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 1, 1, 1], //array can be any size
         [1, 0, 0, 0, 1],
         [1, 1, 1, 1, 1]
       ],
@@ -26,7 +26,7 @@ function generateMap(){
       ]
     ];
 
-  var currentMaterial = new PrefabMaterials().normal
+  var currentMaterial = new PrefabMaterials().phong
   
   for (var i = 0; i < walls.length; i++) {
       for (var j = 0; j < walls[i].length; j++) {
@@ -56,4 +56,7 @@ function generateMap(){
   scene.add( spotLight );
   //var lHelp = new THREE.SpotLightHelper(spotLight);
   //scene.add(lHelp);
+
+  var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+  scene.add( light );
 }

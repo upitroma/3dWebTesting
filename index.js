@@ -28,7 +28,7 @@ function update() {// TODO: add deltaTime mechanic
 } 
 
 //keyboard inputs
-var input = {left:0,right:0, up: 0, down: 0};
+var input = {left:0,right:0, forward: 0, backward: 0};
 
 //grab mouse
 document.addEventListener("mousedown", function(){
@@ -62,11 +62,11 @@ function movePlayer(){
     camera.position.z -= Math.cos(camera.rotation.y+1.5708) * spd;
     camera.position.x -= Math.sin(camera.rotation.y+1.5708) * spd;
   }
-  if(input.up == 1){
+  if(input.forward == 1){
     camera.position.z -= Math.cos(camera.rotation.y) * spd;
     camera.position.x -= Math.sin(camera.rotation.y) * spd;
   }
-  if(input.down == 1){
+  if(input.backward == 1){
     camera.position.z += Math.cos(camera.rotation.y) * spd;
     camera.position.x += Math.sin(camera.rotation.y) * spd;
   }
@@ -82,10 +82,10 @@ window.addEventListener('keydown', function(e) {
       input.left = 1; 
       break;
     case 87:
-      input.up = 1;
+      input.forward = 1;
       break;
     case 83:
-      input.down = 1;
+      input.backward = 1;
       break;
   }
 });
@@ -99,10 +99,10 @@ window.addEventListener('keyup', function(e) {
       input.left = 0;
       break;
       case 87:
-      input.up = 0;
+      input.forward = 0;
       break;
     case 83:
-      input.down = 0;
+      input.backward = 0;
       break; 
   }
 });
