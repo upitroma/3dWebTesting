@@ -1,5 +1,11 @@
 //https://codepen.io/burlapjack/pen/BQOObR
 
+//import materials
+
+
+var materials = new Materials()
+
+
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 //var cHelp = new THREE.CameraHelper(camera);
@@ -54,7 +60,7 @@ function init() {
 
 }
 
-function update() {
+function update() {// TODO: add deltaTime mechanic
   renderer.render(scene, camera);
   movePlayer();
   
@@ -62,11 +68,13 @@ function update() {
 } 
 
 function createLevel(lvl) {
+  var currentMaterial = materials.normal
+
   for (var i = 0; i < lvl.length; i++) {
     for (var j = 0; j < lvl[i].length; j++) {
       for (var k = 0; k < lvl[i][j].length; k++){
         if (lvl[i][j][k] === 1) {
-          createWall(j, i, k);
+          createWall(j, i, k, currentMaterial);
         }
       }
     }
@@ -75,11 +83,9 @@ function createLevel(lvl) {
 
 
 
-function createWall(x, y, z) {
+function createWall(x, y, z, material) {
   var geometry = new THREE.BoxGeometry(scale, scale, scale);
-  var material = new THREE.MeshNormalMaterial({
-    color: 0x000ff0, roughness: 0
-  });
+  
   var cube = new THREE.Mesh(geometry, material);
   cube.position.x = x;
   cube.position.y = y; 
