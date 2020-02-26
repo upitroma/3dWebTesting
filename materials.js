@@ -9,8 +9,10 @@ function PrefabMaterials(){
         color: 0xFFFFFF,    
         flatShading: true,
     });
+    this.devGrid = new THREE.MeshBasicMaterial({
+         map: new THREE.TextureLoader().load('https://threejsfundamentals.org/threejs/resources/images/wall.jpg')
+    });
 }
-
 
 
 

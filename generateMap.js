@@ -26,7 +26,7 @@ function generateMap(){
       ]
     ];
 
-  var currentMaterial = new PrefabMaterials().phong
+  var currentMaterial = new PrefabMaterials().devGrid
   
   for (var i = 0; i < walls.length; i++) {
       for (var j = 0; j < walls[i].length; j++) {
