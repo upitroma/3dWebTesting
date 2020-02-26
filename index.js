@@ -5,15 +5,6 @@ var MyMaterials = new PrefabMaterials()
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-//spotLight not currently useful. might be needed later
-var spotLight = new THREE.SpotLight( 0xffffff);
-spotLight.position.set( 5, 15, 1 );
-spotLight.rotation.x = 0.05;
-spotLight.angle = 0.5; 
-scene.add( spotLight );
-//var lHelp = new THREE.SpotLightHelper(spotLight);
-//scene.add(lHelp);
-
 var renderer = new THREE.WebGLRenderer(); 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
