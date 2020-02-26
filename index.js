@@ -1,16 +1,16 @@
 //https://codepen.io/burlapjack/pen/BQOObR
 
-var MyMaterials = new Materials()
+var MyMaterials = new PrefabMaterials()
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
+//spotLight not currently useful. might be needed later
 var spotLight = new THREE.SpotLight( 0xffffff);
 spotLight.position.set( 5, 15, 1 );
 spotLight.rotation.x = 0.05;
 spotLight.angle = 0.5; 
 scene.add( spotLight );
-
 //var lHelp = new THREE.SpotLightHelper(spotLight);
 //scene.add(lHelp);
 
@@ -18,62 +18,12 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-var scale = 1;
+
 var rotSpd = 0.1;
 var spd = 0.1;
 
-//TODO: generate map in seporate file
-
-var room = [
-  [
-    [1, 0, 1, 1, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1]
-  ],
-  [
-    [1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1]
-  ],
-  [
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 0, 1, 1],
-    [1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1]
-  ]
-];
-
-function createLevel(lvl) {
-  var currentMaterial = MyMaterials.normal
-
-  for (var i = 0; i < lvl.length; i++) {
-    for (var j = 0; j < lvl[i].length; j++) {
-      for (var k = 0; k < lvl[i][j].length; k++){
-        if (lvl[i][j][k] === 1) {
-          createWall(j, i, k, currentMaterial);
-        }
-      }
-    }
-  }
-}
-
-function createWall(x, y, z, material) {
-  var geometry = new THREE.BoxGeometry(scale, scale, scale);
-  
-  var cube = new THREE.Mesh(geometry, material);
-  cube.position.x = x;
-  cube.position.y = y; 
-  cube.position.z = z;
-  scene.add(cube);
-}
-
 function init() {
-  createLevel(room);
+  generateMap()
   update();
   camera.position.y = 0;
   camera.position.z = 0;
