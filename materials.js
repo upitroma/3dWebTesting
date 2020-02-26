@@ -13,7 +13,7 @@ function PrefabMaterials(){
          map: new THREE.TextureLoader().load('https://lh3.googleusercontent.com/proxy/TH1FiVaB6upc9_6hrYDdPXSD98OL6ygLTRxqQWu_QxD-g-5UVHwR_zXvSzDsDISJsECoJNoeN6riEkczFI3STzXssECUKs9ypjt3FL6KgeKcrW0TuTt9brnN6lMrjkzVEt6KYjWa3toa2jo-lG3UF5n4_rh0yNgC5MxrDG0')
     });
 
-    var tex = new THREE.TextureLoader().load('https://1.bp.blogspot.com/-fStEE0dWzOw/Tb9Uiv5h-iI/AAAAAAAAAIU/nmxMGiAt76E/s1600/hexagon%2Bglow.png')
+    var tex = new THREE.TextureLoader().load('https://i.imgur.com/Lvh0FJG.png')
     tex.wrapS = THREE.RepeatWrapping;
     tex.wrapT = THREE.RepeatWrapping;
     tex.repeat.set( 4, 4 );
