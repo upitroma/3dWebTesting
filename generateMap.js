@@ -63,7 +63,9 @@ function generateMap(){
 
   //floor
   var geometry = new THREE.PlaneGeometry( 100, 100, 1, 1 )
-	var floor = new THREE.Mesh( geometry, new PrefabMaterials().hexGrid);
+  var mat = new PrefabMaterials().hexGrid
+
+	var floor = new THREE.Mesh( geometry, mat);
 	floor.material.side = THREE.DoubleSide;
   floor.rotation.x = -1.5708;
   floor.position.y=-.5
