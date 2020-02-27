@@ -16,7 +16,7 @@ function PrefabMaterials(){
     var tex = new THREE.TextureLoader().load('./textures/devGridGrey.jpg')
     tex.wrapS = THREE.RepeatWrapping;
     tex.wrapT = THREE.RepeatWrapping;
-    tex.repeat.set( 4, 4 );
+    tex.repeat.set( 100, 100 );
     this.hexGrid = new THREE.MeshBasicMaterial({
         map: tex
     });
