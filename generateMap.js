@@ -69,7 +69,8 @@ function generateMap(){
 	floor.material.side = THREE.DoubleSide;
   floor.rotation.x = -1.5708;
   
-  floor.position.y=-.5
+  //floor.position.y=-.5
+  floor.position.set(.5, -.5, .5);
   /*
   floor.position.x=.5
   floor.position.z=.5
