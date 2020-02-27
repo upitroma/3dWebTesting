@@ -10,7 +10,7 @@ function PrefabMaterials(){
         flatShading: true,
     });
     this.devGrid = new THREE.MeshBasicMaterial({
-         map: new THREE.TextureLoader().load('https://lh3.googleusercontent.com/proxy/TH1FiVaB6upc9_6hrYDdPXSD98OL6ygLTRxqQWu_QxD-g-5UVHwR_zXvSzDsDISJsECoJNoeN6riEkczFI3STzXssECUKs9ypjt3FL6KgeKcrW0TuTt9brnN6lMrjkzVEt6KYjWa3toa2jo-lG3UF5n4_rh0yNgC5MxrDG0')
+         map: new THREE.TextureLoader().load('./textures/devGrid.png')
     });
 
     var tex = new THREE.TextureLoader().load('https://i.imgur.com/Lvh0FJG.png')
