@@ -10,10 +10,10 @@ function PrefabMaterials(){
         flatShading: true,
     });
     this.devGrid = new THREE.MeshBasicMaterial({
-         map: new THREE.TextureLoader().load('./textures/small.jpg')
+         map: new THREE.TextureLoader().load('./textures/devGridOrange.jpg')
     });
 
-    var tex = new THREE.TextureLoader().load('https://i.imgur.com/Lvh0FJG.png')
+    var tex = new THREE.TextureLoader().load('./textures/devGridGrey.jpg')
     tex.wrapS = THREE.RepeatWrapping;
     tex.wrapT = THREE.RepeatWrapping;
     tex.repeat.set( 4, 4 );
