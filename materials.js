@@ -17,7 +17,8 @@ function PrefabMaterials(){
     tex.wrapS = THREE.RepeatWrapping;
     tex.wrapT = THREE.RepeatWrapping;
     tex.repeat.set( 100, 100 );
-    this.hexGrid = new THREE.MeshBasicMaterial({
+
+    this.bigGreyGrid = new THREE.MeshBasicMaterial({
         map: tex
     });
 
