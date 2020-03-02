@@ -75,5 +75,11 @@ function generateMap(){
   floor.position.x=.5
   floor.position.z=.5
   */
-	scene.add( floor ); 
+  scene.add( floor ); 
+  
+
+
+  //skybox
+  scene.background = new PrefabMaterials().skybox
+
 }
