@@ -1,6 +1,6 @@
 //https://codepen.io/burlapjack/pen/BQOObR
 
-var MyMaterials = new PrefabMaterials()
+
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -8,6 +8,7 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHei
 var renderer = new THREE.WebGLRenderer(); 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+
 
 
 var rotSpd = 0.1;
