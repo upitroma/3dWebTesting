@@ -21,6 +21,12 @@ function PrefabMaterials(){
         map: tex
     });
 
+    this.devHitbox = new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load('./textures/hitbox.png'),
+        transparent: true,
+        side: THREE.DoubleSide
+   });
+
 
     
 

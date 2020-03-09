@@ -4,7 +4,7 @@ function generateMap(){
 
   var walls = [
       [
-        [1, 0, 1, 1, 1],
+        [1, 0, 1, 1, 1,0,2],
         [1, 0, 0, 0, 1],
         [1, 0, 0, 0, 1,0,1,1],
         [1, 0, 0, 0, 1,0,1],
@@ -33,6 +33,9 @@ function generateMap(){
           for (var k = 0; k < walls[i][j].length; k++){
               if (walls[i][j][k] === 1) {
                   createWall(j, i, k, currentMaterial);
+              }
+              else if(walls[i][j][k] === 2){
+                createWall(j, i, k, new PrefabMaterials().devHitbox);
               }
           }
       }
@@ -64,19 +67,12 @@ function generateMap(){
   //floor
   var geometry = new THREE.PlaneGeometry( 100, 100, 1, 1 )
   var mat = new PrefabMaterials().bigGreyGrid
-
 	var floor = new THREE.Mesh( geometry, mat);
 	floor.material.side = THREE.DoubleSide;
   floor.rotation.x = -1.5708;
-  
-  //floor.position.y=-.5
   floor.position.set(.5, -.5, .5);
-  /*
-  floor.position.x=.5
-  floor.position.z=.5
-  */
   scene.add( floor ); 
-  
+
 
 
   //skybox
